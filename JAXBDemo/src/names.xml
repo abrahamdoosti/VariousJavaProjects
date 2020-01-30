@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Contacts>
+	<Contact id="1111">
+		<FirstName>Abraham</FirstName>
+		<LastName>Berhe</LastName>
+		<PhoneNumber>641123456</PhoneNumber>
+	</Contact>
+	<Contact id="2222">
+		<FirstName>Sara</FirstName>
+		<LastName>Belachew</LastName>
+		<PhoneNumber>607895456</PhoneNumber>
+	</Contact>
+	<Contact id="3333">
+		<FirstName>Daniel</FirstName>
+		<LastName>Daru</LastName>
+		<PhoneNumber>345678345</PhoneNumber>
+	</Contact>
+</Contacts>

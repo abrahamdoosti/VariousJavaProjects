@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Contacts>
+    <Contact id="2002">
+        <FirstName>Will</FirstName>
+        <LastName>Smith</LastName>
+        <PhoneNumber>0192824546</PhoneNumber>
+    </Contact>
+    <Contact id="2008">
+        <FirstName>Bruce</FirstName>
+        <LastName>Willis</LastName>
+        <PhoneNumber>0138542756</PhoneNumber>
+    </Contact>
+    <Contact id="2029">
+        <FirstName>Julia</FirstName>
+        <LastName>Roberts</LastName>
+        <PhoneNumber>0138452168</PhoneNumber>
+    </Contact>
+    <Contact id="2086">
+        <FirstName>Kate</FirstName>
+        <LastName>Hudson</LastName>
+        <PhoneNumber>0169485324</PhoneNumber>
+    </Contact>
+</Contacts>

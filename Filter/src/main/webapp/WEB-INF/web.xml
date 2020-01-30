@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	     xmlns="http://java.sun.com/xml/ns/javaee" 
+	     xmlns:web="http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+	     xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+	version="2.4">
+  <display-name>Archetype Created Web Application</display-name>
+  
+  <servlet>
+		<servlet-name>MyServlet</servlet-name>
+		<display-name>MyServlet</display-name>
+		<description></description>
+		<servlet-class>com.abraham.business.MyServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MyServlet</servlet-name>
+		<url-pattern>/do</url-pattern>
+	</servlet-mapping>
+
+	<filter>
+		<filter-name>MyFilter</filter-name>
+		<filter-class>com.abraham.business.MyFilter</filter-class>
+			<init-param>
+				<param-name>my-param</param-name>
+				<param-value>my-param-value</param-value>
+			</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>MyFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+</web-app>
