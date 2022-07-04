@@ -18,23 +18,24 @@ import com.example.model.Prisoner;
  *
  */
 public class PrisonAdmin {
-
+	private static final Integer NUMBER_OF_EXPERIMENTS=100000;
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		PrisonerDao prisonserDao = new PrisonerDaoImpl();
 		BoxDao boxDao = new BoxDaoImpl();
 		List<Prisoner> prisoners = prisonserDao.getPersons();
 		List<Box> boxes = boxDao.getBoxes();
-		// shuffleNumberInBoxes(boxes);
+	
 		float numOfSuccess = 0;
-		for (int i = 0; i < 100000; i++) {
+		for (int i = 0; i < NUMBER_OF_EXPERIMENTS; i++) {
 			shuffleNumberInBoxes(boxes);
 			if (doExperiment(prisoners, boxes)) {
 				numOfSuccess++;
 			}
 
 		}
-		System.out.println("Percent of experiments with success " + (numOfSuccess / 100000) * 100);
+		System.out.println("Percent of experiments with success " + (numOfSuccess / NUMBER_OF_EXPERIMENTS) * 100);
 
 	}
 
