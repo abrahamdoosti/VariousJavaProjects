@@ -59,7 +59,7 @@ public class PrisonAdmin {
 		if (numberOfTries == 50) {
 			return false;
 		}
-
+        //subtract one to get 0 based index
 		currentBoxLabelToOpen = boxes.get(currentBoxLabelToOpen - 1).getValue();
 		numberOfTries++;
 
