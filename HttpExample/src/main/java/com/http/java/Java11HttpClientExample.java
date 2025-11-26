@@ -1,18 +1,26 @@
 package com.http.java;
 
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.net.URI;
 import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
 
 //This class will not compile, unless you use java 11.
 public class Java11HttpClientExample {
-
+	
+	private static final String BASE_URL = "https://whatismyipaddress.com/ip/";
+	
     // one instance, reuse
     private final HttpClient httpClient = HttpClient.newBuilder()
             .version(HttpClient.Version.HTTP_2)
@@ -22,15 +30,46 @@ public class Java11HttpClientExample {
 
         Java11HttpClientExample obj = new Java11HttpClientExample();
 
-        System.out.println("Testing 1 - Send Http GET request");
-        obj.sendGet();
-
-        System.out.println("Testing 2 - Send Http POST request");
-        obj.sendPost();
+		/*
+		 * System.out.println("Testing 1 - Send Http GET request"); obj.sendGet();
+		 * 
+		 * System.out.println("Testing 2 - Send Http POST request"); obj.sendPost();
+		 */
+        List<String> ips=getIpsFromFile("D:\\Workspaces\\OtherJavaProjects\\HttpExample\\src\\main\\java\\com\\http\\java\\data_ipv4.txt");
+        for(String ip: ips) {
+        	obj.sendGet(ip);
+        }
 
     }
 
-    private void sendGet() throws Exception {
+	private static List<String> getIpsFromFile(String path) {
+		// TODO Auto-generated method stub
+		BufferedReader br = null;
+		String lineData;
+		List<String> ips = new ArrayList<>();
+		try {
+			br = new BufferedReader(new FileReader(path));
+			while ((lineData = br.readLine()) != null) {
+				ips.add(lineData);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally{
+			if(null!=br) {
+				try {
+					br.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return ips;
+	}
+
+	private void sendGet() throws Exception {
 
         HttpRequest request = HttpRequest.newBuilder()
                 .GET()
@@ -40,6 +79,24 @@ public class Java11HttpClientExample {
 
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
 
+        // print status code
+        System.out.println(response.statusCode());
+
+        // print response body
+        System.out.println(response.body());
+
+    }
+    private void sendGet(String ipAddress) throws Exception {
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .GET()
+                .uri(URI.create(BASE_URL+"/ip/"+ipAddress))
+                .setHeader("User-Agent", "Java 11 HttpClient Bot")
+                .build();
+
+        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+
+        System.out.println("--------------Response for ip "+ipAddress+"---------");
         // print status code
         System.out.println(response.statusCode());
 
